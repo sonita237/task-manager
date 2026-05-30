@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
-
+import { useState, useEffect, useCallback } from "react";
 const uid = () => Math.random().toString(36).slice(2, 10);
 const pad = (n) => String(n).padStart(2, "0");
 
@@ -217,9 +216,37 @@ function AuthPage({ onLogin }) {
           </div>
         )}
         <button className="btn btn-primary btn-full" onClick={submit}>{mode === "login" ? "Sign In" : "Create Account"}</button>
-        <div className="auth-toggle">
-          {mode === "login" ? (<>Don't have an account? <a onClick={() => { setMode("register"); setError(""); }}>Register</a></>) : (<>Already have an account? <a onClick={() => { setMode("login"); setError(""); }}>Login</a></>)}
-        </div>
+       <div className="auth-toggle">
+  {mode === "login" ? (
+    <>
+      Don't have an account?{" "}
+      <button
+        type="button"
+        className="link-button"
+        onClick={() => {
+          setMode("register");
+          setError("");
+        }}
+      >
+        Register
+      </button>
+    </>
+  ) : (
+    <>
+      Already have an account?{" "}
+      <button
+        type="button"
+        className="link-button"
+        onClick={() => {
+          setMode("login");
+          setError("");
+        }}
+      >
+        Login
+      </button>
+    </>
+  )}
+</div>
       </div>
     </div>
   );
